@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" >
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Angular Setup</title>
+       <!-- <script src="lib/jquery-1.11.3.min.js"></script> -->
+        <script src="lib/angular.min.js"></script>
+        <script src="lib/angular-route.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="lib/ui-bootstrap-tpls-0.13.1.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/app.js"></script>
+    </head>
+
+    <body>
+<h1>This is Timothy's Angular web project</h1><br>
+
+
+<div ng-controller="TabCtrl">
+<tabset>
+    <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" select="changeHash(tab.href)">
+        <div class="main" ng-view></div>
+    </tab>
+</tabset>
+</div>
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<button id="single-button" type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+    Button dropdown <span class="caret"></span>
+</button>
+<a href="#/invoice">Invoice</a><br><br>
+<tabset vertical="false" type="pills">
+    <tab heading="Vertical 1">Vertical content 1</tab>
+    <tab heading="Vertical 2">Vertical content 2</tab>
+</tabset>
+-->
