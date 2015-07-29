@@ -12,6 +12,10 @@ var myApp = angular.module('myApp', [
                 templateUrl: 'partials/main.html',
                 controller: 'MainController'
             }).
+            when('/main', {
+                templateUrl: 'partials/main.html',
+                controller: 'MainController'
+            }).
             when('/invoice', {
                 templateUrl: 'partials/invoice.html',
                 controller: 'InvoiceController'
@@ -19,6 +23,10 @@ var myApp = angular.module('myApp', [
             when('/calc', {
                 templateUrl: 'partials/calc.html',
                 controller: 'CalcController'
+            }).
+            when('/slide', {
+                templateUrl: 'partials/slideShow.html',
+                controller: 'SlideController'
             }).
             otherwise({
                 redirectTo: '/'

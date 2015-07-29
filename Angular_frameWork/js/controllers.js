@@ -15,8 +15,34 @@ app.controller('TabCtrl',function($scope){
     $scope.tabs = [
         {title: 'Main', href:"#/main"},
         {title: 'Invoice', href:'#/invoice'},
-        {title: 'Calculator', href:'#/calc'}
+        {title: 'Calculator', href:'#/calc'},
+        {title: 'Slide Show', href:'#/slide'}
     ];
+});
+
+app.controller('SlideController', ['$scope','$routeParams', function($scope) {
+    $scope.test = "Slide show made by tim!";
+    $scope.user = {
+        name: 'Luke Skywalker',
+        address:{
+            street: 'Hidden Forest',
+            city: 'Secret Rebel Base',
+            planet: 'Yavin 4'
+        },
+        friends: [
+            'Han',
+            'Leia',
+            'Chewbacca'
+        ]
+    }
+}]);
+
+app.directive('tbSlideForMe', function(){
+   return {
+        templateUrl: "templates/slideTemp.html",
+        restrict: "E", //"A" = attribute, "E" = element, "C" = class, "M" = comments you can use more then one at the same time...
+        replace: true// this will replace the custom div tag for compatibility. the only thing is you need to wrap you html file in a div if you do this.
+   }
 });
 
 app.controller('InvoiceController', ['$scope','$routeParams', function($scope) {
