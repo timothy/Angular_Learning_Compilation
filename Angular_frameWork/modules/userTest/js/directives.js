@@ -21,7 +21,6 @@ app.directive('tbUser', function(){
             $scope.collapse = function(){
                 $scope.collapsed = !$scope.collapsed;
             };
-
         }
     }
 });
