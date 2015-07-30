@@ -16,83 +16,73 @@ app.controller('TabCtrl',function($scope){
         {title: 'Main', href:"#/main"},
         {title: 'Invoice', href:'#/invoice'},
         {title: 'Calculator', href:'#/calc'},
+        {title: 'Users', href:'#/user'},
         {title: 'Slide Show', href:'#/slide'}
     ];
 });
 
-app.controller('SlideController', ['$scope','$routeParams', function($scope) {
-    $scope.test = "Slide show made by tim!";
-    $scope.user1 = {
-        name: 'Luke Skywalker',
-        address:{
-            street: 'Hidden Forest',
-            city: 'Secret Rebel Base',
-            planet: 'Yavin 4'
-        },
-        friends: [
-            'Han',
-            'Leia',
-            'Chewbacca'
-        ]
-    };
 
-    $scope.user2 = {
-        name: 'Han Solo',
-        address:{
-            street: 'Dessert',
-            city: 'Mos Eisley',
-            planet: 'Tattoine'
-        },
-        friends: [
-            'Luke',
-            'Leia',
-            'Chewbacca'
-        ]
-    };
+app.controller('SlideController', ['$scope','$routeParams', function($scope,$timeout) {
 
+    $scope.count = 0;
+
+    $timeout(function() {
+        $scope.count += 1;
+        if($scope.count > 10){
+            $scope.count = 0;
+        }
+    }, 3000);
+
+
+    $scope.pic = ['01','02','03'];
 }]);
 
-app.directive('tbSlideForMe', function(){
-   return {
-        templateUrl: "templates/slideTemp.html",
-        restrict: "E", //"A" = attribute, "E" = element, "C" = class, "M" = comments you can use more then one at the same time...
-       // replace: true// this will replace the custom div tag for compatibility. the only thing is you need to wrap you html file in a div if you do this.
-       scope: {//this will create a user attribute that can be used in your directives tag. i.e. <tb-slide-for-me user=" whatever data you want to pass from your controller in here..."
-           //example: '&' // this will pass in a function named example
-           user: '=',// '=' tells angular that I want to pass a value to be used by my directive
-           initialCollapsed: '@collapsed'// '@' tells angular that i am passing in a data value. Angular will only let you pass in strings using the '@'
-       },// specifying a word after the '@' i.e. '@collapsed' will let you use a different var in html then in you angular directive. html will show as collapsed and angular will show as initialCollapsed
-       //scope: true,// true == inherited scope. this means that the scope for the directive will inherit
-       // all properties from the controller but the controller will not be able to see the directives scope. // false is the default and will make the scope shared between both controller and directive
-       controller: function($scope){// keep all controllers for your directive inside of your directive in order to maintain encapsulation
-           $scope.collapsed = ($scope.initialCollapsed === 'true');
-           $scope.knightMe = function(user){
-               user.rank = "knight";
-           };
-           $scope.collapse = function(){
-               $scope.collapsed = !$scope.collapsed;
-           };
+app.service('SlideService', function(){
 
-       }
-   }
-});
+    //unique number generator
+    var mixedList= [];//sequential numbers between 1 and 10 that will be shuffled
+    var randList = [];// will be random numbers between 0 and 9
+    var temp = 0;//holds one var at a time.
+    var stringNum = {};
+    // populates my mixedList
+    function loadList(){
+        // loads both of my arrays
+        for(var i = 0; i < 10; i++){
+            mixedList.push(i + 1);
+            randList.push(Math.floor((Math.random() * 10)));
+        }
 
-app.directive('tbAddress', function(){
-    return{
-        restrict: 'E',
-        scope: true,
-        templateUrl: 'templates/address.html',
-        controller: function($scope){
-            $scope.collapsed = false;
-
-            $scope.collapseAddress = function(){
-                $scope.collapsed = true;
-            };
-            $scope.expandAddress = function(){
-                $scope.collapsed = false;
-            };
+        //shuffle mixedList using the randList
+        for(var i = 0; i < 10; i++){
+            temp = mixedList[i];
+            mixedList[i] = mixedList[randList[i]];
+            mixedList[randList[i]] = temp;
         }
     }
+
+    function getRand(){
+        return mixedList;
+    }
+
+    function getString(){
+
+        stringNum.push("0"+mixedList);
+    }
+
+    function mixer() {
+        // empty all vars in order to get a new set every time
+        mixedList= [];
+        randList = [];
+        temp = 0;
+        //populates my mixedList
+        loadList();
+    }
+
+    return {
+        mixer: mixer,
+        getList: getRand
+    }
+
 });
 
 app.controller('InvoiceController', ['$scope','$routeParams', function($scope) {

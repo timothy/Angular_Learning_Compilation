@@ -24,8 +24,12 @@ var myApp = angular.module('myApp', [
                 templateUrl: 'partials/calc.html',
                 controller: 'CalcController'
             }).
+            when('/user', {
+                templateUrl: 'partials/user.html',
+                controller: 'UserController'
+            }).
             when('/slide', {
-                templateUrl: 'partials/slideShow.html',
+                templateUrl: 'partials/slide.html',
                 controller: 'SlideController'
             }).
             otherwise({
