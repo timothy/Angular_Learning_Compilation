@@ -20,12 +20,13 @@
         <script src="modules/userTest/js/directives.js"></script>
         <!-- slideShow module -->
         <script src="modules/slideShow/slideShowController.js"></script>
+        <script src="modules/slideShow/slideShowService.js"></script>
+        <script src="modules/slideShow/slideShowDirective.js"></script>
     </head>
 
 <body>
     <div class="container-fluid">
         <h1>This is Timothy's Angular web project</h1><br>
-
         <div ng-controller="TabCtrl">
             <tabset>
                 <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" select="changeHash(tab.href)">
