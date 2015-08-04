@@ -1,5 +1,6 @@
 /**
  * Created by tabradford on 7/29/2015.
+ * this might look messy because I took a bunch of inline notes when I was going though the plural sight training.
  */
 app.directive('tbUser', function(){
     return {

@@ -32,6 +32,10 @@ var myApp = angular.module('myApp', [
                 templateUrl: 'partials/slide.html',
                 controller: 'SlideController'
             }).
+            when('/gt_user', {
+                templateUrl: 'partials/github_user_info.html',
+                controller: 'GithubController'
+            }).
             otherwise({
                 redirectTo: '/'
             });

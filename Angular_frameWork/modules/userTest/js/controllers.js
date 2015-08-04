@@ -1,6 +1,8 @@
 /**
  * Created by tabradford on 7/29/2015.
  */
+// I was learning directives on the plural sight. this is similar to what I went learned.
+// just a basic way to store info in order to have something to work with in the directives.
 app.controller('UserController', ['$scope','$routeParams', function($scope) {
     $scope.test = "Slide show made by tim!";
     $scope.user1 = {

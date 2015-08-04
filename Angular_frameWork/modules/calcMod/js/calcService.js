@@ -5,22 +5,22 @@ app.factory('Calc', function(){
     var swtc = 0;
     var num = 0;
     var Total = 0;
-
     var calcNumber = "";
-
+     // I put getters and setters for my vars but I ended up not using them. I still might so I left it in...
     function setNum(newNum) { num = newNum; }
     function setSwtc(newSwtc) { swtc = newSwtc; }
 
     function getTotal() { return Total; }
     function getCalcNumber() { return calcNumber; }
 
+    //this just appends a number
     function numberPress(theNumber) {
         num *= 10;
         num += theNumber;
         calcNumber += theNumber.toString();
         return calcNumber;
     }
-
+     //this will keep track of what operation are being performed
     function operationPress(theOperation, new_swtc) {
         if(Total == 0){
             Total = num;
@@ -52,7 +52,7 @@ app.factory('Calc', function(){
         num = 0;
         return Total;
     }
-
+// clears out everything
     function clearPress() {
         swtc = 0;
         num = 0;
