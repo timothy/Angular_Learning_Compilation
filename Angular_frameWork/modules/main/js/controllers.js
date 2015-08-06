@@ -2,7 +2,7 @@
  * Created by tabradford on 7/22/2015.
  */
 // I added ui-bootstrap because I did not want to spend too much time making this look pretty...
-var app = angular.module('rootControllers', ['ui.bootstrap']);
+var app = angular.module('rootControllers', ['ng', 'ngResource','ui.bootstrap']);
 
 // I kept this in the root controller area because it did not seem like it was big enough to
 //separate into its own module
@@ -20,7 +20,8 @@ app.controller('TabCtrl',function($scope){
         {title: 'Calculator', href:'#/calc'},
         {title: 'Users', href:'#/user'},
         {title: 'Slide Show', href:'#/slide'},
-        {title: 'GitHub User Info', href:'#/gt_user'}
+        {title: 'GitHub User Info', href:'#/gt_user'},
+        {title: 'Flickr', href:'#/flickr'}
     ];
 });
 

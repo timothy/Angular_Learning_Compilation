@@ -36,6 +36,10 @@ var myApp = angular.module('myApp', [
                 templateUrl: 'partials/github_user_info.html',
                 controller: 'GithubController'
             }).
+            when('/flickr', {
+                templateUrl: 'partials/flickr.html',
+                controller: 'FlickrController'
+            }).
             otherwise({
                 redirectTo: '/'
             });

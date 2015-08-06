@@ -1,0 +1,12 @@
+
+<div class="container-fluid" style="padding-top: 30px">
+    <form name="user" ng-submit="getPhoto(user_input)">
+        Search Flickr: <input type="text" ng-model="user_input" />
+        <button type="submit">Submit</button>
+    </form>
+    <div class="container-fluid" style="padding-top: 30px">
+        <div ng-repeat="item in photos.items">
+            <img ng-src="{{ item.media.m }}" />
+        </div>
+    </div>
+</div>

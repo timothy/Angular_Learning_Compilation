@@ -13,7 +13,6 @@ app.controller('GithubController', ['$scope','$http', function($scope, $http) {
             $scope.goShow = false;
         }// end if
         else{
-
             var onUserComplete = function(response) {
                 $scope.user = response.data;
                 $scope.error = {type: "", isTrue: false};
