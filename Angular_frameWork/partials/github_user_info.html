@@ -5,7 +5,7 @@
     </form>
 
     <div ng-show="!!user && goShow">
-        <h1>GitHub user: {{user.login}}</h1><br/>
+        <h1>GitHub user: {{user.login | frstLttrCp}}</h1><br/>
         <img ng-src="{{user.avatar_url}}" title="{{user.name}}"><br/>
         <h3>{{user.login.cap}} has the following account atributes</h3>
         <ul>
